@@ -18,7 +18,9 @@
   "keywords": [
     "ember-addon"
   ],
-  "ember-addon-main": "lib/ember-addon-main.js",
+  "ember-addon": {
+    "main": "lib/ember-addon-main.js"
+  },
   "author": "Gabor Babicz <gabor.babicz@gmail.com>",
   "license": "MIT",
   "devDependencies": {
