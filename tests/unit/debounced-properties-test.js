@@ -1,8 +1,8 @@
 /* global sinon */
 
 import Ember from 'ember';
-import { test, moduleFor } from 'ember-qunit';
-import DebouncedPropertiesMixin from 'ember-cli-debounced-properties/mixins/debounced-properties';
+import { test } from 'ember-qunit';
+import DebouncedPropertiesMixin from 'ember-debounced-properties/mixin';
 var run = Ember.run;
 var Obj, obj, clock;
 
@@ -12,7 +12,7 @@ Obj = Ember.Object.extend(DebouncedPropertiesMixin, {
 });
 
 
-moduleFor('mixin:debounced-properties', 'DebouncedPropertiesMixin', {
+module('DebouncedPropertiesMixin', {
   setup: function() {
     clock = sinon.useFakeTimers();
     obj = Obj.create();
