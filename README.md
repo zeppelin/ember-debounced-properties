@@ -11,10 +11,35 @@ operation, such as an HTTP request until the user didn't finish typing.
 
 ## Installation
 
+```
 $ npm install ember-debounced-properties --save-dev
+```
+
+## Usage
+
+1. Extend your `Ember.Object` (such as an `Ember.Component`) with the mixin.
+    ```js
+    import Ember from 'ember';
+    import DebouncedPropertiesMixin from 'ember-debounced-properties/mixin';
+      
+    export default Ember.Component.extend(DebouncedPropertiesMixin, {
+      debouncedProperties: ['value']
+    });
+    ```
+
+2. Use `debouncedValue` inside the component's template
+    ```hbs
+    <h2>{{debouncedValue}}</h2>
+    ```
+
+3. `debouncedValue` will follow `value` after a short delay. You can set the delay with `valueDelay`.
+    ```hbs
+    {{input value=value}} <- after you done typing it will appear 1.5 seconds later below
+    {{my-component value=value valueDelay=1500}}
+    ```
 
 
-## Example
+## Gravatar Example
 
 ```javascript
 // components/gravatar-image.js
