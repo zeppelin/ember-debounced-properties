@@ -33,6 +33,7 @@ $ npm install ember-debounced-properties --save-dev
     ```
 
 3. `debouncedValue` will follow `value` after a short delay. You can set the delay with `valueDelay`.
+
     ```hbs
     {{input value=value}} <- after you done typing it will appear 1.5 seconds later below
     {{my-component value=value valueDelay=1500}}
@@ -65,6 +66,44 @@ export default Ember.Component.extend(DebouncedPropertiesMixin, {
 ```handlebars
 {{gravatar-image email='hello@example.com'}}
 ```
+
+## Experimental ES7 decorator syntax
+
+Inspired by [@rwjblue](https://github.com/rwjblue)'s awesome [ember-computed-decorators](https://github.com/rwjblue/ember-computed-decorators), it is possible to use the ES7 decorator syntax to define debounced properties without using the mixin. All you have to do is just put a decorator over the property you want to have a debounced version. It can be a regular or a computed property, both will work.
+
+```js
+import Ember from 'ember';
+import debounced from 'ember-debounced-properties/decorator';
+
+port default Ember.Component.extend({
+  firstName: 'John',
+  lastName: 'Doe',
+
+  @debounced(2000)
+  fullName: Ember.computed('firstName', 'lastName', function() {
+    return `${firstName} ${lastName}`;
+  })
+});
+```
+
+The result is the same as with the mixin: both `debouncedFullName` and `fullNameDelay` are accessible on the object. For convenience, the delay can be set from the decorator, but the if `fullNameDelay` exist, it will have precedence, since it could be set at runtime as well. When you call the decorator without arguments (just `@decorator`), the default 1000ms delay will be used.
+
+### Usage
+
+Refer to `ember-computed-decorators`' [Babel Setup](https://github.com/rwjblue/ember-computed-decorators#babel-setup) chapter.
+
+### One More Thing&trade;
+
+It is, of course, could be used together with `ember-computed-decorators`!
+
+```js
+@debounced
+@computed('firstName', 'lastName')
+fullName(firstName, lastName) {
+  return `${firstName} ${lastName}`;
+}
+``` 
+
 
 ## License
 
