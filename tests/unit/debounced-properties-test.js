@@ -9,7 +9,7 @@ let Obj, obj, clock;
 
 Obj = Ember.Object.extend(DebouncedPropertiesMixin, {
   debouncedProperties: ['email'],
-  email: ''
+  email: 'initial value'
 });
 
 
@@ -26,14 +26,16 @@ module('DebouncedPropertiesMixin', {
 });
 
 test('default delay', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
+
+  assert.equal(obj.get('debouncedEmail'), 'initial value', "the initial value of `debouncedEmail` is the same as the `email`'s.");
 
   obj.set('email', 'hello@example.com');
 
-  assert.equal(obj.get('debouncedEmail'), undefined, "`debouncedEmail` isn't updated immediately.");
+  assert.equal(obj.get('debouncedEmail'), 'initial value', "`debouncedEmail` isn't updated immediately.");
 
   clock.tick(900);
-  assert.equal(obj.get('debouncedEmail'), undefined, "`debouncedEmail` isn't updated before 1000ms passed.");
+  assert.equal(obj.get('debouncedEmail'), 'initial value', "`debouncedEmail` isn't updated before 1000ms passed.");
 
   clock.tick(100);
   assert.equal(obj.get('debouncedEmail'), 'hello@example.com', "`debouncedEmail` is updated after 1000ms passed.");
@@ -46,7 +48,7 @@ test('custom delay', function(assert) {
   obj.set('email', 'hello@example.com');
 
   clock.tick(1400);
-  assert.equal(obj.get('debouncedEmail'), undefined, "`debouncedEmail` isn't updated before 1500ms passed.");
+  assert.equal(obj.get('debouncedEmail'), 'initial value', "`debouncedEmail` isn't updated before 1500ms passed.");
 
   clock.tick(100);
   assert.equal(obj.get('debouncedEmail'), 'hello@example.com', "`debouncedEmail` is updated after 1500ms passed.");

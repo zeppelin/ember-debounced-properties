@@ -22,6 +22,7 @@ export default Mixin.create({
       defineCallbackMethod(this, property, setterName);
       setupObserver(this, property, setterName, observerName);
       this.addObserver(property, this, this[observerName]);
+      this[setterName]();
     }
   }
 });
