@@ -75,7 +75,7 @@ Inspired by [@rwjblue](https://github.com/rwjblue)'s awesome [ember-computed-dec
 import Ember from 'ember';
 import debounced from 'ember-debounced-properties/decorator';
 
-port default Ember.Component.extend({
+export default Ember.Component.extend({
   firstName: 'John',
   lastName: 'Doe',
 
