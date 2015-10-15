@@ -3,7 +3,10 @@
 import Ember from 'ember';
 import { module } from 'qunit';
 import { test } from 'ember-qunit';
+/* jshint ignore:start */
 import debounced from 'ember-debounced-properties/decorator';
+/* jshint ignore:end */
+
 const { run } = Ember;
 let obj, clock;
 
