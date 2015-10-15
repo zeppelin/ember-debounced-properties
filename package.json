@@ -1,6 +1,6 @@
 {
   "name": "ember-debounced-properties",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple way to define debounced properties",
   "directories": {
     "doc": "doc",
