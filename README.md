@@ -1,4 +1,4 @@
-# Ember Debounced Properties Mixin [![Build Status](https://travis-ci.org/zeppelin/ember-debounced-properties.svg)](https://travis-ci.org/zeppelin/ember-debounced-properties)
+# Ember Debounced Properties Mixin [![Build Status](https://travis-ci.org/zeppelin/ember-debounced-properties.svg)](https://travis-ci.org/zeppelin/ember-debounced-properties) [![Ember Observer Score](http://emberobserver.com/badges/ember-debounced-properties.svg)](http://emberobserver.com/addons/ember-debounced-properties)
 
 Creates debounced (delayed) versions of properties listed in the `debouncedProperties`
 array. For each of these properties, a `debounced<property-name>` version is created with a
